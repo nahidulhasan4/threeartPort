@@ -21,7 +21,9 @@ const Navbar = () => {
             Nahid &nbsp; <span className='sm:block hidden'>|  Portfolio</span>
           </p>
         </Link>
+        <p className='text-red-500'>assas</p>
        </div>
+       
     </nav>
   )
 }
