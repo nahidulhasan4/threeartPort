@@ -5,29 +5,39 @@ import CanvasLoader from "../Loader";
 
 const Computers = () => {
   const computer = useGLTF("./desktop_pc/scene.gltf");
+  
   return (
-    <mesh>
-      <hemisphereLight intensity={0.15} groundColor="red" />
-      <pointLight intensity={3} />      
+    <group> {/* Use group instead of mesh for primitives */}
+      {/* Ambient lights first */}
+      {/* <ambientLight intensity={1} /> */}
+      <hemisphereLight intensity={0.15} groundColor="black" />
+      
+      {/* Main spotlight - positioned to actually hit the model */}
+      <spotLight
+        angle={0.12} // Wider angle
+        penumbra={1}
+        intensity={12} // Higher intensity
+        castShadow
+        shadow-mapSize={1024}
+        
+      />
+      
+      {/* Fill light */}
+      <pointLight  intensity={1} />
+      
+      {/* The 3D model */}
       <primitive
         object={computer.scene}
-        scale={0.75}
+        scale={0.7}
         position={[0, -3.25, -1.5]}
         rotation={[-0.01, -0.2, -0.1]}
       />
-      <spotLight
-        position={[-20, 50, 10]}
-        angle={0.12}
-        penumbra={1}
-        intensity={1}
-        castShadow
-        shadow-mapSize={1024}
-      />
-    </mesh>
+    </group>
   );
 };
 
 const ComputersCanvas = () => {
+  
   return (
     <Canvas
       frameloop="demand"
@@ -38,8 +48,8 @@ const ComputersCanvas = () => {
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
           enableZoom={false}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2}
+          maxPolarAngle={Math.PI}
+          minPolarAngle={0}
         />
         <Computers />
       </Suspense>
