@@ -1,43 +1,34 @@
 import { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
+import { OrbitControls, Preload, SpotLight, useGLTF } from "@react-three/drei";
 import CanvasLoader from "../Loader";
 
 const Computers = () => {
   const computer = useGLTF("./desktop_pc/scene.gltf");
-  
   return (
-    <group> {/* Use group instead of mesh for primitives */}
-      {/* Ambient lights first */}
-      {/* <ambientLight intensity={1} /> */}
+    <mesh>
+     <ambientLight intensity={1.5} position={[-20, 5, 10]}/>
       <hemisphereLight intensity={0.15} groundColor="black" />
-      
-      {/* Main spotlight - positioned to actually hit the model */}
+      <pointLight intensity={5} />
       <spotLight
-        angle={0.12} // Wider angle
+        position={[20, 50, 10]}
+        angle={0.12}
         penumbra={1}
-        intensity={12} // Higher intensity
+        intensity={100}
         castShadow
         shadow-mapSize={1024}
-        
-      />
-      
-      {/* Fill light */}
-      <pointLight  intensity={1} />
-      
-      {/* The 3D model */}
+      />    
       <primitive
         object={computer.scene}
-        scale={0.7}
+        scale={0.7} 
         position={[0, -3.25, -1.5]}
         rotation={[-0.01, -0.2, -0.1]}
       />
-    </group>
+    </mesh>
   );
 };
 
 const ComputersCanvas = () => {
-  
   return (
     <Canvas
       frameloop="demand"
@@ -48,8 +39,8 @@ const ComputersCanvas = () => {
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
           enableZoom={false}
-          maxPolarAngle={Math.PI}
-          minPolarAngle={0}
+          maxPolarAngle={Math.PI / 2}
+          minPolarAngle={Math.PI / 2}
         />
         <Computers />
       </Suspense>
