@@ -9,7 +9,7 @@ const Computers = () => {
     <mesh>
      <ambientLight intensity={1.5} position={[-20, 5, 10]}/>
       <hemisphereLight intensity={0.15} groundColor="black" />
-      <pointLight intensity={5} />
+      <pointLight intensity={2} />
       <spotLight
         position={[20, 50, 10]}
         angle={0.12}
