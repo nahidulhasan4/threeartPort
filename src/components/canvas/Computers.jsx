@@ -21,7 +21,7 @@ const Computers = ( {isMobile}) => {
       <primitive
         object={computer.scene}
         scale={ isMobile ? 0.3 : 0.70} 
-  position={isMobile ? [0, -2.5, -0.6] : [0, -4, -1.5]} // Y changed from -2/-3.25 to -3/-4
+  position={isMobile ? [0, -2.5, -0.6] : [0, -4, -1.5]} 
         rotation={[-0.01, -0.2, -0.1]}
       />
     </mesh>
@@ -32,9 +32,11 @@ const ComputersCanvas = () => {
  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // here add event listener for media query change screeb size
     const mediaQuery = window.matchMedia("(max-width: 500px)");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMobile(mediaQuery.matches);
-
+//  here define  a callback function to handle changes to the media query
     const handleMediaQueryChange = (event) => {
       setIsMobile(event.matches);
     };
