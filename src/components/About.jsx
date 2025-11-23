@@ -5,8 +5,9 @@ import { motion } from 'framer-motion';
 import { styles } from '../styles';
 import { services } from '../constants';
 import { fadeIn, textVariant } from '../utils/motion';
+import { SectionWrapper } from '../hoc';
 
-const serviceCard = (service, index) => (
+const ServiceCard = (service, index) => (
   <Tilt className="xs:w-[250px] w-full">
     <motion.div
       variants={fadeIn("right", "spring", 0.5 * index, 0.75)}
@@ -52,11 +53,12 @@ const About = () => {
       real-world problems. Let's work together to bring your ideas to life! 
     </motion.p>
     <div className='mt-20 flex flex-wrap gap-10 ' >
-      {services.map((service, index) => serviceCard(service, index))}
-
+      {services.map((service, index) => (
+        <ServiceCard key={service.title} index={index} {...service} />
+      ))}
     </div>
     </>
   )
 }
 
-export default About
+export default SectionWrapper(About, "about");
