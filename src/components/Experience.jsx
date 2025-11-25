@@ -1,12 +1,12 @@
 import React from 'react'
  import {motion} from 'framer-motion';
+import { SectionWrapper } from '../hoc';
 
 import{ VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component'
 import 'react-vertical-timeline-component/style.min.css' ;
 import { styles } from '../styles';
 import { experiences } from '../constants';
 import { textVariant } from '../utils/motion';    
-import { SectionWrapper } from '../hoc';
 
 
 const ExperienceCard = ({ experience }) => (
@@ -44,20 +44,27 @@ const ExperienceCard = ({ experience }) => (
 
 const Experience = () => {
   return (
-    <motion.div variants={textVariant( )}>
+    <motion.div 
+      variants={textVariant()} 
+      initial="hidden"
+      animate="show"
+    >
+      {/* NOTE: Section title - displays work experience heading */}
       <p className={styles.sectionSubText}>What I have done so far</p>
       <h2 className={styles.sectionHeadText}>Work Experience.</h2>
-      <div className='mt-20 flex flex-col ' >
-      <VerticalTimeline      >
-        {experiences.map((experience, index) => (
-          <ExperienceCard key={index} experience={experience} />
-        ))}
-      </VerticalTimeline>
-      </div>    
-
       
+      {/* NOTE: Vertical timeline container showing all experience cards */}
+      <div className='mt-20 flex flex-col'>
+        <VerticalTimeline>
+          {/* NOTE: Map through experiences array from constants - if empty, nothing renders */}
+          {experiences.map((experience, index) => (
+            <ExperienceCard key={index} experience={experience} />
+          ))}
+        </VerticalTimeline>
+      </div>    
     </motion.div>
   )
 }
 
-export default Experience;
+
+export default SectionWrapper(Experience, "work");
