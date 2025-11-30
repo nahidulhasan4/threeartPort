@@ -68,7 +68,10 @@ const ProjectCard = ({
 const Works = () => {
   return (
     <>
-      <motion.div variants={textVariant()}>
+      {/* NOTE: motion.div এর জন্য initial এবং animate প্রপ যোগ করা হয়েছে
+          যাতে টেক্সট অ্যানিমেশন সঠিকভাবে কাজ করে। SectionWrapper এর সাথে
+          ভিতরের এনিমেশন সমন্বয় করতে এগুলো প্রয়োজন। */}
+      <motion.div variants={textVariant()} initial="hidden" animate="show">
         <p className={styles.sectionSubText}>My work</p>
         <h2 className={styles.sectionHeadText}>Projects.</h2>
       </motion.div>
@@ -76,12 +79,16 @@ const Works = () => {
       {/*
         NOTE: পূর্বে এখানে শুধু `flex` ব্যবহার করা ছিল, ফলে মোবাইল/ছোট স্ক্রিনে
         প্রকল্প কার্ডগুলো অনুভূমিকভাবে এক সারিতে চলে যেতে পারত এবং ভিউপোর্টের
-        বাইরে চলে যাওয়ার কারণে দেখা যাচ্ছিল না। এটি ঠিক করতে responsive
+        বাইরে চলে যাওয়ার কারণে দেখা যাচ্ছিল না। এটি ঠিক করতে responsive
         layout যোগ করা হয়েছে: ছোট স্ক্রিনে `flex-col`, বড় স্ক্রিনে `flex-row`.
       */}
-      <div className="w-full flex flex-col md:flex-row">
+      <div className="w-full flex flex-col">
+        {/* NOTE: motion.p এ initial এবং animate যোগ করা হয়েছে যাতে ডেসক্রিপশন টেক্সট
+            সঠিকভাবে fade-in হয়। */}
         <motion.p
           variants={fadeIn("", "", 0.1, 1)}
+          initial="hidden"
+          animate="show"
           className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
         >
           Following projects showcase my skills and experience through
@@ -104,5 +111,8 @@ const Works = () => {
   );
 };
 
-
-export default SectionWrapper(Works, "");
+// Wrap Works with SectionWrapper and provide the section id 'work'
+// সেকশনের id খালি রাখলে hash-span এর negative margin কারণে কন্টেন্ট লুকিয়ে যায়।
+// এই সমস্যা ঠিক করতে একটি valid id 'work' দেওয়া হয়েছে যা navLinks-এর সাথে ম্যাচ করে।
+const WorksSection = SectionWrapper(Works, "work");
+export default WorksSection;
