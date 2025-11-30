@@ -109,6 +109,5 @@ const Works = () => {
 // Wrap Works with SectionWrapper and provide the section id 'work'
 // so navigation (navLinks) which uses id 'work' will scroll correctly.
 // create a named wrapped component to help Fast Refresh and debugging
-const WorksSection = SectionWrapper(Works, "projects");
-export default WorksSection;
+export default SectionWrapper(Works, "projects");
 // export  default Works;
