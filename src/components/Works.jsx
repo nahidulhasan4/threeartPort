@@ -104,10 +104,5 @@ const Works = () => {
   );
 };
 
-// Export wrapped section with an explicit id so navigation and anchor links work
-// এবং HOC-এ খালি স্ট্রিং থাকলে সেকশনের আইডি অনুপস্থিত থাকায় নেভিগেশন সমস্যা হতে পারে।
-// Wrap Works with SectionWrapper and provide the section id 'work'
-// so navigation (navLinks) which uses id 'work' will scroll correctly.
-// create a named wrapped component to help Fast Refresh and debugging
-export default SectionWrapper(Works, "projects");
-// export  default Works;
+
+export default SectionWrapper(Works, "");
