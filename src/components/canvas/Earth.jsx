@@ -20,7 +20,11 @@ const EarthCanvas = () => {
       gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls enableZoom={false} />
+        <OrbitControls enableZoom={false} 
+        autoRotate
+        maxPolarAngle={Math.PI / 2}
+        minPolarAngle={Math.PI / 2}
+        />
         <Earth />
       </Suspense> 
       <Preload all />
