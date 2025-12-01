@@ -28,4 +28,4 @@ const EarthCanvas = () => {
   )
 } 
 
-export default Earth
+export default EarthCanvas
