@@ -8,5 +8,7 @@ const Stars = () => {
     <div>Stars</div>
   )
 }
+const StarsCanvas = () => {
+  const starRef = useRef();
 
 export default Stars
