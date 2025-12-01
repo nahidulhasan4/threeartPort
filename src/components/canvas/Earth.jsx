@@ -6,8 +6,10 @@ import CanvasLoader from '../Loader';
 
 
 const Earth = () => {
+  const earth = useGLTF('./earth/scene.gltf');
+
   return (
-    <div>Earth</div>
+    <primitive object={earth.scene} scale={2.5} position-y={0} rotation-y={0} />
   )
 }
 
@@ -16,7 +18,7 @@ const EarthCanvas = () => {
     <Canvas
       frameloop="demand"
       shadows
-      camera={{ position: [4, 3, 6], fov: 50 }}
+      camera={{ position: [4, 3, 6], fov: 45 }}
       gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<CanvasLoader />}>
