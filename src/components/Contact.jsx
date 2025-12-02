@@ -3,12 +3,11 @@ import { motion } from 'framer-motion';
 import { styles } from '../styles';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import {sectionWrapper} from '../hoc';
 import emailjs from '@emailjs/browser';
 import { div } from 'framer-motion/client';
 import { EarthCanvas } from './canvas';
-
 
 /**
  * Contact - যোগাযোগ সেকশন যা ব্যবহারকারীদের মেসেজ পাঠানোর ফর্ম প্রদান করে
@@ -34,16 +33,16 @@ const handleSubmit = (e) => {
   setLoading(true);
 
   emailjs.send(
-    'service_id',
-    'template_id',
+    'service_3we9ssj',
+    'template_hrlng7p',
     {
       from_name: form.name,
-      to_name: 'Your Name',
+      to_name: 'Nahid Hasan',
       from_email: form.email,
-      to_email: '
+      to_email: 'nahidhasan4836@gmail.com',
       message: form.message,
     },
-    'public_key'
+    'TDNg6Ix4xCJrX9Hwq'
   )
   .then(() => {
     setLoading(false);
