@@ -1,10 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser"; // NOTE: এটি default export, named import নয়
 import { styles } from "../styles";
 import { slideIn } from "../utils/motion";
 import { toast } from "react-toastify"; // ব্যবহারকারীর জন্য পপ-আপ নোটিফিকেশন
-import { useEffect } from "react";
 import { SectionWrapper } from "../hoc"; // ঠিকভাবে HOC নাম (capital S) ব্যবহার করা প্রয়োজন
 import { EarthCanvas } from "./canvas";
 
@@ -49,7 +48,9 @@ const Contact = () => {
         )
         .then(() => {
           setLoading(false);
-          toast.success("Thank you. I will get back to you as soon as possible.");
+          toast.success(
+            "Thank you. I will get back to you as soon as possible."
+          );
           setForm({ name: "", email: "", message: "" });
         })
         .catch((error) => {

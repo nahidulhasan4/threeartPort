@@ -1,7 +1,7 @@
-import {React , useState, useRef, Suspense} from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { points, PointMaterial, Preload } from '@react-three/drei';
-import * as random from 'maath/random/dist/maath-random.esm';
+import React, { useState, useRef, Suspense } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Points, PointMaterial, Preload } from "@react-three/drei";
+import * as random from "maath/random/dist/maath-random.esm";
 
 const Stars = (props) => {
   const ref = useRef();
@@ -15,23 +15,27 @@ const Stars = (props) => {
 
   return (
     <group rotation={[0, 0, Math.PI / 4]}>
-      <points ref={ref} positions={sphere} stride={3} frustumCulled={false} {...props} >
+      <Points
+        ref={ref}
+        positions={sphere}
+        stride={3}
+        frustumCulled={false}
+        {...props}
+      >
         <PointMaterial
           transparent
-          color='#f272c8'
+          color="#f272c8"
           size={0.002}
           sizeAttenuation={true}
           depthWrite={false}
         />
-        /</points>
-
-      
+      </Points>
     </group>
-  )
-}
+  );
+};
 const StarsCanvas = () => {
   return (
-    <div className='w-full h-auto absolute inset-0 z-[-1]'>
+    <div className="w-full h-auto absolute inset-0 z-[-1]">
       <Canvas camera={{ position: [0, 0, 1] }}>
         <Suspense fallback={null}>
           <Stars />
@@ -39,9 +43,7 @@ const StarsCanvas = () => {
         <Preload all />
       </Canvas>
     </div>
+  );
+};
 
-  )
-}
-
-
-export default StarsCanvas
+export default StarsCanvas;
