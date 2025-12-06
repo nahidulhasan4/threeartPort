@@ -15,16 +15,28 @@ import { Sphere } from "three";
  */
 const Stars = (props) => {
   const ref = useRef();
-const Sphere = random.inSphere(new Float32Array(6000), { radius: 1.2 });
-  return(
-    <group rotation={[0, 0, Math.PI / 4]}>
-      <Points ref={ref} positions={Sphere} stride={3} frustumCulled {...props} >
-<PointMaterial transparent color="#f272c8" size={0.002} sizeAttenuation={true} depthWrite={false}  ambientLight={0.5}  />
-        </Points>
+  const Sphere = random.inSphere(new Float32Array(6000), { radius: 1.2 });
+useFrame((state, delta) => {
+    ref.current.rotation.x -= delta / 10;
+    ref.current.rotation.y -= delta / 15;
+  });
 
+
+  return (
+    <group rotation={[0, 0, Math.PI / 4]}>
+      <Points ref={ref} positions={Sphere} stride={3} frustumCulled {...props}>
+        <PointMaterial
+          transparent
+          color="#f272c8"
+          size={0.002}
+          sizeAttenuation={true}
+          depthWrite={false}
+          ambientLight={0.5}
+        />
+      </Points>
     </group>
-  )
-}
+  );
+};
 /**
  * StarsCanvas - পটভূমি তারকা ক্ষেত্র রেন্ডারিং Canvas
  *
@@ -40,21 +52,15 @@ const Sphere = random.inSphere(new Float32Array(6000), { radius: 1.2 });
  */
 const StarsCanvas = () => {
   return (
-    <div className="w-full h-auto absolute inset-0 z-[-1]">   
-    <Canvas
-    camera={{position: [0, 0, 1]}}
-    >
-      <Suspense fallback={null}>
-        <Stars />
+    <div className="w-full h-auto absolute inset-0 z-[-1]">
+      <Canvas camera={{ position: [0, 0, 1] }}>
+        <Suspense fallback={null}>
+          <Stars />
+        </Suspense>
 
-      </Suspense>
-
-      <Preload all />
-
-    </Canvas>
-    
+        <Preload all />
+      </Canvas>
     </div>
-   
   );
 };
 
