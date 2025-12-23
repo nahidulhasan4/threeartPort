@@ -135,10 +135,10 @@ const experiences = [
     iconBg: "#E6DEDD",
     date: "April 2024 - Nov 2024",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Operated and monitored computer systems and associated hardware (e.g., servers, printers, scanners) to ensure smooth daily operations.",
+      "Managed data entry, database updates, and routine file processing tasks with a high degree of accuracy.",
+      "Performed regular system backups and assisted in data recovery procedures to safeguard critical company information.",
+      "Provided first-level technical support to staff, troubleshooting common hardware and software issues to minimize downtime.",
     ],
   },
   {
