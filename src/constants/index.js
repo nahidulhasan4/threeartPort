@@ -148,10 +148,10 @@ const experiences = [
     iconBg: "#383E56",
     date: "May 2022 - Feb 2023",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Conducted in-depth keyword research, competitive analysis, and on-page SEO audits to identify optimization opportunities.",
+      "Optimized website content, meta tags, headers, and images for target keywords to improve search relevance and click-through rates.",
+      "Managed technical SEO, including improving site speed, fixing crawl errors, and ensuring mobile-friendliness and site architecture best practices.",
+      "Built high-quality backlinks through outreach, content partnerships, and digital PR to enhance domain authority.",
     ],
   },
   {
