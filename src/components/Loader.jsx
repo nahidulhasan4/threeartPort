@@ -1,5 +1,7 @@
 import {Html, useProgress} from '@react-three/drei';
 
+
+// লোডার কম্পোনেন্ট - 3D কন্টেন্ট লোডিং এর সময় প্রগ্রেস দেখায়
 const Loader = () => {
   const {progress} = useProgress();
   return (
